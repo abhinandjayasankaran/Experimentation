@@ -1,4 +1,4 @@
-import DisplayExpense from "./components/DisplayExpenses";
+import DisplayExpense from "./components/Expenses/DisplayExpenses";
 
 
 function App() {
