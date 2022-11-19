@@ -7,12 +7,12 @@ import {useState} from "react";
 
 function ExpenseItem(props) {
 
-  const [title, setTitle] = useState(0);
+  const [title, setTitle] = useState(props.title);
 
   //create a for loop that loops till 10
 
   const clickHandler = () => {
-    setTitle(title+1);
+    setTitle("updated");
     
     console.log(title);
   };
