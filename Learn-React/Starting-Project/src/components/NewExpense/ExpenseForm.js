@@ -39,6 +39,9 @@ function ExpenseForm(props) {
     return (
         <div>
             <form onSubmit={submitHandler}>
+            <div>
+                <h3 className="form-title">Add Expense</h3>
+            </div>
             <div className="new-expense__controls">
                 <div className="new-expense__control">
                     <label>Title</label>
@@ -54,6 +57,7 @@ function ExpenseForm(props) {
                 </div>
             </div>
             <div className="new-expense__actions">
+                <button onClick={props.onCancel}>Cancel</button>
                 <button type="submit">Add Expense</button>
             </div>
         </form>

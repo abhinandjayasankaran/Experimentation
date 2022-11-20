@@ -24,3 +24,10 @@
   .new-expense__actions {
     text-align: right;
   }
+
+  .form-title{
+    text-align: center;
+    font-weight: bold;
+    color: rgb(64,0,93);
+    margin-bottom: 1rem;
+  }
