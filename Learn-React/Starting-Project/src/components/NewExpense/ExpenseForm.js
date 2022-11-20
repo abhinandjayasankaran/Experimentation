@@ -4,7 +4,7 @@ import {useState} from 'react'
 function ExpenseForm(props) {
 
     const [enteredTitle, setEnteredTitle] = useState('');
-    const [enteredAmount, setEnteredAmount] = useState('');
+    const [enteredAmount, setEnteredAmount] = useState(0);
     const [enteredDate, setEnteredDate] = useState('');
 
 
