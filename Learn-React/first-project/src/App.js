@@ -22,7 +22,7 @@ const DUMMY_DATA = [
 function App() {
   return (
     <div>
-      <h1 style={{ textAlign: "center", color: "darkcyan" , marginBottom: '3rem'}}>
+      <h1 style={{ textAlign: "center", color: "rgba(255,255,255,1)" , marginBottom: '3rem'}}>
         My First React Project
       </h1>
       <UserForm />

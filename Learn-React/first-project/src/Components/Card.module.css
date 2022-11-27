@@ -1,11 +1,23 @@
 .general {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     margin: auto;
     max-width: 40rem;
-    box-shadow: 0 0 1rem rgb(0,0,0,30%);
+    box-shadow: 0 0 1rem rgba(255, 0, 217, 0.901);
     border-radius: 1rem;
     padding: 1rem;
     margin-bottom: 1.5rem;
 }
+
+.general:hover {
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    max-width: 40rem;
+    box-shadow: 0 0 2rem rgb(255, 93, 231);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+
 
 
