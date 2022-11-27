@@ -1,0 +1,13 @@
+.name{
+    text-align: left;
+    font-weight: bold;
+    color: rgba(97, 0, 145, 0.692);
+}
+
+.age{
+    margin-top: -1.2rem;
+    margin-right: 2rem;
+    text-align: right;
+    font-weight: bold;
+    color: rgba(97, 0, 145, 0.692);
+}

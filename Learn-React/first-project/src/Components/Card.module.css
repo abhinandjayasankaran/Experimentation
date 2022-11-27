@@ -1,0 +1,11 @@
+.general {
+    background-color: white;
+    margin: auto;
+    max-width: 40rem;
+    box-shadow: 0 0 1rem rgb(0,0,0,30%);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+
