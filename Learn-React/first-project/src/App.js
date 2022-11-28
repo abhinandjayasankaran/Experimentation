@@ -1,5 +1,6 @@
 import UserForm from "./Components/UserForm";
 import UserList from "./Components/UserList";
+import {useState} from 'react';
 
 const DUMMY_DATA = [
   {
@@ -20,14 +21,23 @@ const DUMMY_DATA = [
 ];
 
 function App() {
+
+  const [users, setUsers] = useState(DUMMY_DATA);
+
+  function addUserHandler(user){
+    setUsers((prevUser)=>{
+      return [user, ...prevUser];
+    })
+  }
+
   return (
     <div>
       <h1 style={{ textAlign: "center", color: "rgba(255,255,255,1)" , marginBottom: '3rem'}}>
         My First React Project
       </h1>
-      <UserForm />
+      <UserForm addUser={addUserHandler} />
       <div style={{marginBottom: '5rem'}}></div>
-      <UserList data={DUMMY_DATA}/>
+      <UserList data={users} />
     </div>
   );
 }
