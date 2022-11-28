@@ -2,7 +2,8 @@ import styles from "./Modal.module.css";
 
 function Modal(props) {
   return (
-    <div className={styles.overlay} onClick={props.close}>
+    <div>
+      <div className={styles.overlay} onClick={props.close} />
       <div className={styles.modalContainer}>
         <div className={styles.header}>
           <h2>{props.heading}</h2>
