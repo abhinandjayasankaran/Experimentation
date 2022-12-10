@@ -5,8 +5,12 @@ import DisplayQR from "./components/DisplayQR";
 import QRCode from "qrcode";
 
 const underProcess = new Audio("/Assets/Sounds/ui_loading.wav");
-const displaySound = new Audio("/Assets/Sounds/hero_decorative-celebration-01.wav");
-const refreshSound = new Audio("/Assets/Sounds/navigation_transition-right.wav");
+const displaySound = new Audio(
+  "/Assets/Sounds/hero_decorative-celebration-01.wav"
+);
+const refreshSound = new Audio(
+  "/Assets/Sounds/navigation_transition-right.wav"
+);
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -16,7 +20,7 @@ function App() {
       errorCorrectionLevel: "high",
       type: "image/jpeg",
       quality: 1,
-      margin: 8,
+      margin: 3,
       color: {
         dark: "#000000ff",
         light: "#FFFFFF",

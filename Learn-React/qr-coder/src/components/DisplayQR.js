@@ -2,11 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import "./DisplayQR.css";
 
 const downloadSound = new Audio("/Assets/Sounds/navigation_selection-complete-celebration.wav");
-const refreshSound = new Audio("/Assets/Sounds/navigation_transition-right.wav");
+
 
 function DisplayQR(props) {
 
-    refreshSound.play();
   const imageRef = useRef();
 
   const [downloadState, setDownloadState] = useState(false);
