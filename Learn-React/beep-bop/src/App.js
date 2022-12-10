@@ -1,29 +1,17 @@
 import "./App.css";
 import { Howl } from "howler";
-import { useEffect, useRef } from "react";
+import { useRef, useState } from "react";
+
+let audio = new Audio(null);
 
 function App() {
-  //let audio = new Audio("/Assets/navigation_backward-selection.wav");
-  const sound = new Howl({
-    src: ["https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"],
-    html5: true,
-    onplay: function () {
-      console.log("Finished!");
-    },
-    duration: 1000,
-  });
+  const [srcVal, changeSrcVal] = useState(null);
 
-  const play = () => {
-    sound.play();
-  };
+  const [toggle, updateToggle] = useState(0);
 
-  const pause = () => {
-    sound.pause();
-  };
+  const val = useRef(null);
 
-  const stop = () => {
-    sound.stop();
-  };
+  console.log(audio.src);
 
   const notify = new Howl({
     src: ["/Assets/navigation_backward-selection.wav"],
@@ -35,31 +23,108 @@ function App() {
 
   const playNotify = () => {
     setTimeout(() => {
-    notify.play();}, 3000);
+      notify.play();
+    }, 100);
   };
 
-  const aud = useRef(null);
+  const setMusic = (val) => {
+    audio.src = val;
+    console.log(audio.src);
+  };
 
-   return (
+  const playMusic = () => {
+    if (val.current.value.length === 0) {
+      playNotify();
+    }
+    if (toggle === 0) {
+      //audio.src = val.current.value;
+      console.log(audio.src);
+      audio.play();
+      return;
+    }
+
+    audio.play();
+    updateToggle(0);
+  };
+
+  const pauseMusic = () => {
+    if (val.current.value.length === 0) {
+      playNotify();
+    }
+    updateToggle(1);
+    audio.pause();
+  };
+
+  let vals = [
+    {
+      key: 0,
+      value: "",
+      label: "",
+    },
+  ];
+
+  for (let i = 1; i < 18; i++) {
+    vals.push({
+      key: i,
+      value: `https://www.soundhelix.com/examples/mp3/SoundHelix-Song-${i}.mp3`,
+      label: `Song ${i}`,
+    });
+  }
+
+  const inputChange = (val) => {
+    const newVal = vals.filter((item) => {
+      return item.label === val;
+    });
+
+    console.log(newVal[0].value);
+    setMusic(newVal[0].value);
+    changeSrcVal(newVal[0].value);
+  };
+
+  return (
     <div>
-      <button onClick={play} style={{ left: "50%", top: "50%" }}>
-        Play Sound
-      </button>
-      <button onClick={pause} style={{ left: "50%", top: "50%" }}>
-        Pause Sound
-      </button>
-      <button onClick={stop} style={{ left: "50%", top: "50%" }}>
-        Stop
-      </button>
-      <button onClick={playNotify} className="cent">
-        Notify
-      </button>
-      <audio
-        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-        controls
-        className="centerButton"
+      <div id="main-element">
+        <h1 style={{ marginTop: "0px", marginBottom: "50px" }}>
+          Choose a song
+        </h1>
+        <input
+          style={{
+            padding: "5px",
+            minWidth: "200px",
+            marginBottom: "50px",
+            textAlign: "center",
+          }}
+          type="text"
+          list="songs"
+          ref={val}
+          onChange={() => {
+            inputChange(val.current.value);
+          }}
+        />
 
-      />
+        <datalist id="songs">
+          {vals.map((item) => {
+            return <option key={item.key}>{item.label}</option>;
+          })}
+        </datalist>
+
+        <div>
+          <button
+            onClick={playMusic}
+            style={{ padding: "5px", minWidth: "100px", marginBottom: "50px" }}
+          >
+            Play Choice
+          </button>
+          <button
+            onClick={pauseMusic}
+            style={{ marginLeft: "10px", padding: "5px", minWidth: "100px" }}
+          >
+            Pause Choice
+          </button>
+        </div>
+
+        <audio src={srcVal} controls />
+      </div>
     </div>
   );
 }
